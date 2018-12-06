@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG_SOURCE=$(cat $1)
+
+DELIMETER=" - "
+BRANCH=`git rev-parse --abbrev-ref HEAD` || ""
+PREFIX="${BRANCH}${DELIMETER}"
+
+if [ "$BRANCH" == "master" ]; then
+  exit 0
+fi
+
+if [ "${COMMIT_MSG_SOURCE/$BRANCH}" != "$COMMIT_MSG_SOURCE" ]; then
+  exit 0 
+fi
+
+echo -e "${PREFIX}$(cat ${COMMIT_MSG_FILE})" > ${COMMIT_MSG_FILE}
