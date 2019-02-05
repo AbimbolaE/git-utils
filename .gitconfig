@@ -1,0 +1,15 @@
+[alias]
+  st = status
+  br = branch
+  ps = push
+  pl = pull --rebase
+  df = diff
+  co = checkout
+  ci = commit -m
+  ce = commit --amend --no-edit
+  lag = log --graph --all --decorate
+[user]
+	name = Abimbola Esuruoso
+	email = aesuruoso@homeaway.com
+[core]
+	hooksPath = ~/.git/hooks/
